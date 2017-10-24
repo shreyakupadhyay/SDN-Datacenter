@@ -17,11 +17,11 @@ $ ovs-vsctl add-br ovs-br1
 ```sh
 $ ifconfig
 ```
-### OVS installation done.
-===
+### OVS installation done:
+
 
 ## Assigning IP to Raspberry pi:
-===
+
 1. Using DHCP server: 
 If raspberry pi is able to get IP address from some DHCP server and a IP will be assigned to raspberry pi.
 --------------
