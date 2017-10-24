@@ -1,10 +1,8 @@
-# SDN-Project
-=====================================
+# SDN-Project:
 
 SDN course Project. 
 
 ## Installing OVS on Raspberry pi:
-=====================================
 
 Make sure Raspberry pi are connected to the internet.
 ```sh
@@ -20,13 +18,33 @@ $ ovs-vsctl add-br ovs-br1
 $ ifconfig
 ```
 ### OVS installation done.
-=====================================
+===
 
 ## Assigning IP to Raspberry pi:
-=====================================
-
+===
 1. Using DHCP server: 
-If raspberry pi is able to get IP address from some DHCP server and an IP is assigned to raspberry pi, we are half done.
+If raspberry pi is able to get IP address from some DHCP server and a IP will be assigned to raspberry pi.
 --------------
+
+2. Assigning Static IP address:
+```sh
+$ sudo vim /etc/network/interfaces
+```
+- Insert the details below in /etc/network/interfaces file. Change the parameters according to your network.
+```
+auto eth0
+iface eth0 inet static
+    address 10.0.0.4
+    netmask 255.255.255.0
+    network 10.0.0.0
+    broadcast 10.0.0.255
+    gateway 10.0.0.1
+    dns-nameservers 10.0.0.1 8.8.8.8
+```
+```sh
+$ sudo service network-manager restart
+```
+
+
 
 
