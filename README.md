@@ -44,6 +44,12 @@ iface eth0 inet static
 $ sudo service networking restart
 ```
 
+## Installing OpenVirteX for Network Slicing:
+
+Use this [link](https://ovx.onlab.us/getting-started/installation/) for installing and starting OpenVirteX.
+
+
+
 
 
 
