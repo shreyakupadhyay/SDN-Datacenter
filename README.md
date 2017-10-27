@@ -42,6 +42,7 @@ iface eth0 inet static
 ```
 ```sh
 $ sudo service networking restart
+$ sudo ifup eth0
 ```
 
 
