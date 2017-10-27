@@ -32,7 +32,6 @@ $ sudo vim /etc/network/interfaces
 ```
 - Insert the details below in /etc/network/interfaces file. Change the parameters according to your network.
 ```
-auto eth0
 iface eth0 inet static
     address 10.0.0.4
     netmask 255.255.255.0
@@ -42,7 +41,7 @@ iface eth0 inet static
     dns-nameservers 10.0.0.1 8.8.8.8
 ```
 ```sh
-$ sudo service network-manager restart
+$ sudo service networking restart
 ```
 
 
