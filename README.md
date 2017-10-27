@@ -27,23 +27,18 @@ If raspberry pi is able to get IP address from some DHCP server and a IP will be
 --------------
 
 2. Assigning Static IP address:
+
 ```sh
-$ sudo vim /etc/network/interfaces
+$ sudo vim /etc/dhcpcd.conf
 ```
-- Insert the details below in /etc/network/interfaces file. Change the parameters according to your network.
+- Insert the details below in /etc/dhcpcd.conf file. Change the parameters according to your network.
 ```
-iface eth0 inet static
-    address 10.0.0.4
-    netmask 255.255.255.0
-    network 10.0.0.0
-    broadcast 10.0.0.255
-    gateway 10.0.0.1
-    dns-nameservers 10.0.0.1 8.8.8.8
+interface eth0
+static ip_address=192.168.1.4/24
+static routers=192.168.1.1
+static domain_name_servers=192.168.1.1
 ```
-```sh
-$ sudo service networking restart
-$ sudo ifup eth0
-```
+
 
 
 
