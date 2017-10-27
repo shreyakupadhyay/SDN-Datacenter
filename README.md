@@ -39,6 +39,12 @@ static routers=192.168.1.1
 static domain_name_servers=192.168.1.1
 ```
 
+## Installing OpenVirteX for Network Slicing:
+
+Use this [link](https://ovx.onlab.us/getting-started/installation/) for installing and starting OpenVirteX.
+
+
+
 
 
 
