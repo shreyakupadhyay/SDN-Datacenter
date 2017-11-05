@@ -39,6 +39,19 @@ static routers=192.168.1.1
 static domain_name_servers=192.168.1.1
 ```
 
+## Connecting OVS with controller:
+
+```sh
+$ ovs-vsctl set-controller <BRIDGE> tcp:$CONTROLLER_ADDRESS:$CONTROLLER_PORT
+```
+For assinging multiple controllers to OVS:
+
+```sh
+$ ovs-vsctl set-controller <BRIDGE> tcp:$CONTROLLER_ADDRESS1:$CONTROLLER_PORT1 \
+tcp:$CONTROLLER_ADDRESS2:$CONTROLLER_PORT2 \
+tcp:$CONTROLLER_ADDRESS3:$CONTROLLER_PORT3 ...
+```
+
 ## Installing OpenVirteX for Network Slicing:
 
 Use this [link](https://ovx.onlab.us/getting-started/installation/) for installing and starting OpenVirteX.
