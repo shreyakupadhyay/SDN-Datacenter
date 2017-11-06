@@ -52,11 +52,36 @@ tcp:$CONTROLLER_ADDRESS2:$CONTROLLER_PORT2 \
 tcp:$CONTROLLER_ADDRESS3:$CONTROLLER_PORT3 ...
 ```
 
+## Creating bridge and creating ports/Interfaces and assigning IP addresses to them
+
+- Creating a bridge
+```sh
+$ sudo ovs-vsctl add-br <BRIDGE_NAME>
+``` 
+When a bridge is created using OVS by default a port of same name is created i.e when a bridge named br0 is created so port named br0 is created and it has interface br0.
+
+- Connecting bridge to eth0 
+
+```sh
+$ sudo ovs-vsctl add-port <BRIDGE_NAME> eth0
+```
+
+- Adding a new port, Interface to an existing bridge
+
+```sh
+$ sudo ovs-vsctl add-port <BRIDGE_NAME> <PORT_NAME> -- set Interface <PORT_NAME> type=internal
+$ sudo ip link set <PORT_NAME> up
+```
+
+- Adding an IP address to an Interface
+
+```sh
+$ sudo ip addr add 192.168.0.123/24 dev <PORT_NAME>
+```
+
 ## Installing OpenVirteX for Network Slicing:
 
 Use this [link](https://ovx.onlab.us/getting-started/installation/) for installing and starting OpenVirteX.
-
-
 
 
 
