@@ -70,13 +70,23 @@ $ sudo ovs-vsctl add-port <BRIDGE_NAME> eth0
 
 ```sh
 $ sudo ovs-vsctl add-port <BRIDGE_NAME> <PORT_NAME> -- set Interface <PORT_NAME> type=internal
-$ sudo ip link set <PORT_NAME> up
+$ sudo ip link set <PORT_NAME> up 
+            or 
+$ sudo ifconfig <PORT_NAME> up 
 ```
 
 - Adding an IP address to an Interface
 
 ```sh
 $ sudo ip addr add 192.168.0.123/24 dev <PORT_NAME>
+            or
+$ sudo ifconfig <PORT_NAME> 192.168.0.123 netmask 255.255.255.0
+```
+
+- Removing an IP address assigned to an Interface
+
+```sh
+$ sudo ifconfig <PORT_NAME> 0
 ```
 
 ## Installing OpenVirteX for Network Slicing:
