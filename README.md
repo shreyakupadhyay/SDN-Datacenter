@@ -66,13 +66,27 @@ When a bridge is created using OVS by default a port of same name is created i.e
 $ sudo ovs-vsctl add-port <BRIDGE_NAME> eth0
 ```
 
-- Adding a new port, Interface to an existing bridge
+- Adding a new port, Internal Interface to an existing bridge
 
 ```sh
 $ sudo ovs-vsctl add-port <BRIDGE_NAME> <PORT_NAME> -- set Interface <PORT_NAME> type=internal
 $ sudo ip link set <PORT_NAME> up 
             or 
 $ sudo ifconfig <PORT_NAME> up 
+```
+
+- Creating tun Interface and adding it to bridge
+
+```sh
+$ sudo ip tuntap add mode tun <PORT_NAME>
+$ sudo ovs-vsctl add-port <BRIDGE_NAME> <PORT_NAME>
+```
+
+- Creating tap Interface and adding it to bridge
+
+```sh
+$ sudo ip tuntap add mode tap <PORT_NAME>
+$ sudo ovs-vsctl add-port <BRIDGE_NAME> <PORT_NAME>
 ```
 
 - Adding an IP address to an Interface
@@ -87,6 +101,12 @@ $ sudo ifconfig <PORT_NAME> 192.168.0.123 netmask 255.255.255.0
 
 ```sh
 $ sudo ifconfig <PORT_NAME> 0
+```
+
+- Listing all Interfaces
+
+```sh
+$ sudo ovs-vsctl list Interface
 ```
 
 ## Installing OpenVirteX for Network Slicing:
