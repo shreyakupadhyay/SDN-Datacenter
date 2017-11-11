@@ -75,17 +75,19 @@ $ sudo ip link set <PORT_NAME> up
 $ sudo ifconfig <PORT_NAME> up 
 ```
 
-- Creating tun Interface and adding it to bridge
+- Creating *tun* Interface and adding it to bridge
 
 ```sh
 $ sudo ip tuntap add mode tun <PORT_NAME>
+$ sudo ifconfig <PORT_NAME> up
 $ sudo ovs-vsctl add-port <BRIDGE_NAME> <PORT_NAME>
 ```
 
-- Creating tap Interface and adding it to bridge
+- Creating *tap* Interface and adding it to bridge
 
 ```sh
 $ sudo ip tuntap add mode tap <PORT_NAME>
+$ sudo ifconfig <PORT_NAME> up
 $ sudo ovs-vsctl add-port <BRIDGE_NAME> <PORT_NAME>
 ```
 
