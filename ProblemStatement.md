@@ -1,9 +1,6 @@
 # Problem statement of our project:
 
-## Topology:
-### Devices used:
-One neatgear JFS516 Layer 2 switch, three raspberry pi, one laptop.
-
-### Network Setup:
-All the three raspberry pi are connected to neatgear switch. One raspberry pi(rpi1) is made as gateway. Creating two ovs interfaces
-in rpi1. One interface was made as gateway for on network while other raspberry pi(rpi2) is made as gateway to aonother gateway.
+### Tasks to be performed:
+1. Deploy SDN network on a real hardware using 6 host(3 raspberry pi and 3 ubuntu complaint system), neatgear L2 switch and SDN software components. 
+2. Performing network slicing on the deployed SDN network.
+3. Installing various network functions such as Load Balancer as a Service(LBaaS), Firewall as a Service(FWaaS) on the sliced network.
