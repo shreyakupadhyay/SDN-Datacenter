@@ -4,8 +4,10 @@ SDN course Project.
 
 ### Project Documentation:
 1. [Problem statement](https://github.com/shreyakupadhyay/SDN-Project/blob/master/ProblemStatement.md).
-2. [Network topology](https://github.com/shreyakupadhyay/SDN-Project/blob/master/Topology.md) deployed using SDN on physical hardware.
-3. [Procedure](https://github.com/shreyakupadhyay/SDN-Project/blob/master/NetworkSetup.md) followed for completing the tasks and proper functioning of the deployed SDN network.
+2. [Network topology](https://github.com/shreyakupadhyay/SDN-Project/blob/master/tasks/task1/Topology.md) deployed using SDN on physical hardware.
+3. Procedure followed for various tasks:</br >
+  a. For [task 1](https://github.com/shreyakupadhyay/SDN-Project/blob/master/tasks/task1/NetworkSetup.md). </br >
+  b. For [task 2](https://github.com/shreyakupadhyay/SDN-Project/blob/master/tasks/task2/NetworkSlicing.md). </br >
 
 
 ### Few references to working VM images for SDN softwares:
