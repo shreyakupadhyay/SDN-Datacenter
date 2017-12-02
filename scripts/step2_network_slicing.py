@@ -13,14 +13,6 @@ CORES = {
   'SEA': {'dpid': '000000000000010%s'},
   'SFO': {'dpid': '000000000000020%s'},
   'LAX': {'dpid': '000000000000030%s'},
-  'ATL': {'dpid': '000000000000040%s'},
-  'IAD': {'dpid': '000000000000050%s'},
-  'EWR': {'dpid': '000000000000060%s'},
-  'SLC': {'dpid': '000000000000070%s'},
-  'MCI': {'dpid': '000000000000080%s'},
-  'ORD': {'dpid': '000000000000090%s'},
-  'CLE': {'dpid': '0000000000000a0%s'},
-  'IAH': {'dpid': '0000000000000b0%s'},
   }
 
 FANOUT = 4
@@ -40,32 +32,28 @@ class I2Topo(Topo):
 
     # Add hosts and connect them to their core switch
     for switch in CORES:
-      for count in xrange(1, FANOUT + 1):
-        # Add hosts
-        host = 'h_%s_%s' % (switch, count)
-        ip = '10.0.0.%s' % count
-        mac = CORES[switch]['dpid'][4:] % count
-        h = self.addHost(host, ip=ip, mac=mac)
-        # Connect hosts to core switches
-        self.addLink(h, self.cores[switch], bw=10, delay='5ms', loss=2,
-                          max_queue_size=1000, use_htb=True)
-
+      	for count in xrange(1, FANOUT + 1):
+            # Add hosts
+            host = 'h_%s_%s' % (switch, count)
+            ip = '10.0.0.%s' % count
+            mac = CORES[switch]['dpid'][4:] % count
+            h = self.addHost(host, ip=ip, mac=mac)
+    
+    self.addLink('h_SEA_1', 'SEA', bw=10, delay='5ms', loss=2, max_queue_size=1000, use_htb=True)
+    self.addLink('h_SEA_2', 'SEA')
+    self.addLink('h_SEA_3', 'SEA')
+    self.addLink('h_SEA_4', 'SEA')
+    self.addLink('h_LAX_1', 'LAX')
+    self.addLink('h_LAX_2', 'LAX', bw=10, delay='5ms', loss=2, max_queue_size=1000, use_htb=True)
+    self.addLink('h_LAX_3', 'LAX')
+    self.addLink('h_LAX_4', 'LAX')
+    self.addLink('h_SFO_1', 'SFO')
+    self.addLink('h_SFO_2', 'SFO')
+    self.addLink('h_SFO_3', 'SFO')
+    self.addLink('h_SFO_4', 'SFO')
     # Connect core switches
-    self.addLink(self.cores['SFO'], self.cores['SEA'],bw=10)
-    self.addLink(self.cores['SEA'], self.cores['SLC'],bw=10)
-    self.addLink(self.cores['SFO'], self.cores['LAX'],bw=10)
-    self.addLink(self.cores['LAX'], self.cores['SLC'],bw=10)
-    self.addLink(self.cores['LAX'], self.cores['IAH'],bw=10)
-    self.addLink(self.cores['SLC'], self.cores['MCI'],bw=10)
-    self.addLink(self.cores['MCI'], self.cores['IAH'],bw=10)
-    self.addLink(self.cores['MCI'], self.cores['ORD'],bw=10)
-    self.addLink(self.cores['IAH'], self.cores['ATL'],bw=10)
-    self.addLink(self.cores['ORD'], self.cores['ATL'],bw=10)
-    self.addLink(self.cores['ORD'], self.cores['CLE'],bw=10)
-    self.addLink(self.cores['ATL'], self.cores['IAD'],bw=10)
-    self.addLink(self.cores['CLE'], self.cores['IAD'],bw=10)
-    self.addLink(self.cores['CLE'], self.cores['EWR'],bw=10)
-    self.addLink(self.cores['EWR'], self.cores['IAD'],bw=10)
+    self.addLink(self.cores['SFO'], self.cores['SEA'])
+    self.addLink(self.cores['SFO'], self.cores['LAX'])
 
 
 if __name__ == '__main__':
