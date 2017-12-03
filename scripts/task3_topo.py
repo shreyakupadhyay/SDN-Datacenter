@@ -33,18 +33,18 @@ class NetworkTopo( Topo ):
 
     def build( self, **_opts ):
         router = self.addNode( 'r0', cls=LinuxRouter, ip='10.0.0.1/24' )
-        s1 = self.addSwitch('s1', cls=OVSKernelSwitch)
-        s2 = self.addSwitch('s2', cls=OVSKernelSwitch)
-        s3 = self.addSwitch('s3', cls=OVSKernelSwitch)
+        s1 = self.addSwitch('s1')
+        s2 = self.addSwitch('s2')
+        s3 = self.addSwitch('s3')
 
         info( '*** Add hosts\n')
-        stu1 = self.addHost('stu1', cls=Host, ip='10.0.0.2', defaultRoute ='via 10.0.0.1')
-        stu2 = self.addHost('stu2', cls=Host, ip='10.0.0.3', defaultRoute ='via 10.0.0.1')
-        fac1 = self.addHost('fac1', cls=Host, ip='10.0.0.101', defaultRoute ='via 10.0.0.1')
-        fac2 = self.addHost('fac2', cls=Host, ip='10.0.0.102', defaultRoute='via 10.0.0.1')
+        stu1 = self.addHost('stu1', cls=Host, ip='10.0.0.2', defaultRoute ='via 10.0.0.1',mac='00:00:00:00:00:01')
+        stu2 = self.addHost('stu2', cls=Host, ip='10.0.0.3', defaultRoute ='via 10.0.0.1',mac='00:00:00:00:00:02')
+        fac1 = self.addHost('fac1', cls=Host, ip='10.0.0.101', defaultRoute ='via 10.0.0.1',mac='00:00:00:00:01:01')
+        fac2 = self.addHost('fac2', cls=Host, ip='10.0.0.102', defaultRoute='via 10.0.0.1',mac='00:00:00:00:01:02')
 
-        ext1 = self.addHost('ext1', cls=Host, ip='12.12.12.12', defaultRoute='via 12.12.12.1')
-        ext2 = self.addHost('ext2', cls=Host, ip='11.11.11.11', defaultRoute='via 11.11.11.1')
+        ext1 = self.addHost('ext1', cls=Host, ip='12.12.12.12', defaultRoute='via 12.12.12.1',mac='00:00:00:00:02:01')
+        ext2 = self.addHost('ext2', cls=Host, ip='11.11.11.11', defaultRoute='via 11.11.11.1',mac='00:00:00:00:03:01')
 
         info( '*** Add links\n')
         self.addLink(s3, router,intfName2='r0-eth1',params2={'ip':'10.0.0.1/24'})
@@ -57,21 +57,21 @@ class NetworkTopo( Topo ):
         self.addLink(s2,s3)
         self.addLink(s1,s3)
 
+topos = {'mytopo':(lambda: NetworkTopo() )}
 
+# def run():
+#     "Test linux router"
+#     topo = NetworkTopo()
+#     net = Mininet( topo=topo )  # controller is used by s1-s3
+#     net.start()
+#     #info( '*** Routing Table on Router:\n' )
+#     #info( net[ 'r0' ].cmd( 'route' ) )
+#     # net['ext1'].cmd('python -m SimpleHTTPServer 80')
+#     # net['ext2'].cmd('python -m SimpleHTTPServer 80')
 
-def run():
-    "Test linux router"
-    topo = NetworkTopo()
-    net = Mininet( topo=topo )  # controller is used by s1-s3
-    net.start()
-    #info( '*** Routing Table on Router:\n' )
-    #info( net[ 'r0' ].cmd( 'route' ) )
-    # net['ext1'].cmd('python -m SimpleHTTPServer 80')
-    # net['ext2'].cmd('python -m SimpleHTTPServer 80')
+#     CLI( net )
+#     net.stop()
 
-    CLI( net )
-    net.stop()
-
-if __name__ == '__main__':
-    setLogLevel( 'info' )
-    run()
+# if __name__ == '__main__':
+#     setLogLevel( 'info' )
+#     run()
