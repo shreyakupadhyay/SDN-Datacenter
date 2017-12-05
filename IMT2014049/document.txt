@@ -1,0 +1,43 @@
+Step 1:
+
+1. Install vlan package to use vconfig command. Command to install vlan package. 
+$ sudo apt-get install vlan
+
+2. Run $ sudo python vlanTopoCreate.py.
+3. The topology asked in the question will get create.
+4. Output of this script:
+h1 -> h2 X X h5 h6 X X 
+h2 -> h1 X X h5 h6 X X 
+h3 -> X X h4 X X h7 h8 
+h4 -> X X h3 X X h7 h8 
+h5 -> h1 h2 X X h6 X X 
+h6 -> h1 h2 X X h5 X X 
+h7 -> X X h3 h4 X X h8 
+h8 -> X X h3 h4 X X h7 
+
+Step 2:
+ping from h1 to h4:
+mininet> sh ovs-ofctl add-flow s1 priority=100,in_port=1,dl_vlan=100,actions=mod_vlan_vid:200,output:4
+mininet> sh ovs-ofctl add-flow s1 priority=100,in_port=4,dl_vlan=200,actions=mod_vlan_vid:100,output:1
+
+Question ping h1 to h7
+
+Step 3: 
+ping from h1 to h7:
+mininet> sh ovs-ofctl add-flow s1 priority=100,ip,nw_src=10.0.0.1,nw_dst=10.0.0.7,dl_vlan=100,actions=output:5
+mininet> sh ovs-ofctl add-flow s2 priority=100,ip,nw_src=10.0.0.1,nw_dst=10.0.0.7,dl_vlan=100,actions=mod_vlan_vid:200,output:3
+mininet> sh ovs-ofctl add-flow s2 priority=100,ip,nw_src=10.0.0.7,nw_dst=10.0.0.1,dl_vlan=200,actions=output:5
+mininet> sh ovs-ofctl add-flow s1 priority=100,ip,nw_src=10.0.0.7,nw_dst=10.0.0.1,dl_vlan=100,actions=mod_vlan_vid:100,output:1
+
+Try:
+mininet> h1 ping h7
+
+Adding arp entries to switches:
+mininet> sh ovs-ofctl add-flow s1 arp,nw_dst=10.0.0.1,actions=output:1
+mininet> sh ovs-ofctl add-flow s1 arp,nw_dst=10.0.0.2,actions=output:2
+mininet> sh ovs-ofctl add-flow s1 arp,nw_dst=10.0.0.3,actions=output:3
+mininet> sh ovs-ofctl add-flow s1 arp,nw_dst=10.0.0.4,actions=output:4
+mininet> sh ovs-ofctl add-flow s2 arp,nw_dst=10.0.0.5,actions=output:1
+mininet> sh ovs-ofctl add-flow s2 arp,nw_dst=10.0.0.6,actions=output:2
+mininet> sh ovs-ofctl add-flow s2 arp,nw_dst=10.0.0.7,actions=output:3
+mininet> sh ovs-ofctl add-flow s2 arp,nw_dst=10.0.0.8,actions=output:4
