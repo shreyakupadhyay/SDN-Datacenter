@@ -12,7 +12,7 @@ Deploying a Software defined network(SDN) on a physical hardware consisting rasp
 1. Deploy SDN network on hardware using 6 host(3 raspberry pi and 3 ubuntu complaint system), neatgear L2 switch and SDN software components. This is [task 1](https://github.com/shreyakupadhyay/SDN-Project/blob/master/tasks/task1/NetworkSetup.md). 
 2. Performing network slicing using OpenVirtex and mininet. This is [task 2](https://github.com/shreyakupadhyay/SDN-Project/blob/master/tasks/task2/NetworkSlicing.md).
 3. Deploying SDN virtual network according to the description provided above.
-4. Installing various network functions such as Firewall as a Service(FWaaS) on the above sliced network inside mininet.
+4. Installing various network functions such as Firewall as a Service(FWaaS) on the above sliced network inside mininet. This is [task 3](https://github.com/shreyakupadhyay/SDN-Datacenter/tree/master/tasks/task3).
  
 ### Project Documentation:
 
@@ -20,6 +20,7 @@ Deploying a Software defined network(SDN) on a physical hardware consisting rasp
 2. Procedure followed for various tasks:</br >
   a. For [task 1](https://github.com/shreyakupadhyay/SDN-Project/blob/master/tasks/task1/NetworkSetup.md). </br >
   b. For [task 2](https://github.com/shreyakupadhyay/SDN-Project/blob/master/tasks/task2/NetworkSlicing.md). </br >
+  c. For [task 3](https://github.com/shreyakupadhyay/SDN-Datacenter/tree/master/tasks/task3). </br >
 
 
 ### Few references to working VM images for SDN softwares:

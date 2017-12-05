@@ -27,7 +27,7 @@ To run the firewall as a service some requirements needs to be satisfied.
 $ sudo pip install requests
 ```
 
-To run the script use [firewall_as_service.py] 
+To run the script use [step3_firewall_as_service.py](https://github.com/shreyakupadhyay/SDN-Datacenter/blob/master/scripts/step3_firewall_as_service.py)
 ```
-$ python firewall_as_service.py
+$ python step3_firewall_as_service.py
 ```
