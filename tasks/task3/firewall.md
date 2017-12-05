@@ -18,7 +18,7 @@ To run the firewall first we need to setup the campus network on the mininet.
 
 Use [topo.py](https://github.com/shreyakupadhyay/SDN-Project/blob/master/scripts/task3_topo.py)
 ```sh
-$ sudo mn --custom mesh.py --topo task3_topo.py --controller=remote,ip=127.0.0.1
+$ sudo mn --custom mesh.py --topo task3b_topo.py --controller=remote,ip=127.0.0.1
 ```
 Here we are using a remote Open Day light controller instead of a normal POX controller which is default by the mininet.
 

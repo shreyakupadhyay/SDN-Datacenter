@@ -6,9 +6,9 @@ And there is a external internet where two Servers are running
 The objective is to rate limit the bandwidth allocated to students and faculty does not have any such limits
 
 #### Run script:
-Use [topo.py](https://github.com/shreyakupadhyay/SDN-Project/blob/master/scripts/task3_topo.py)
+Use [topo.py](https://github.com/shreyakupadhyay/SDN-Project/blob/master/scripts/task3a_topo.py)
 ```
-$ sudo mn --custom mesh.py --topo task3_topo.py --controller=remote,ip=127.0.0.1
+$ python task3a_topo.py
 ```
 This setsup the mininet environment and the topology of the simple campus network
 
