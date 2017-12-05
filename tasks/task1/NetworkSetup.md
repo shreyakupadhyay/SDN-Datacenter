@@ -78,6 +78,12 @@ $ sudo ip addr add 192.168.0.123/24 dev <PORT_NAME>
 $ sudo ifconfig <PORT_NAME> 192.168.0.123 netmask 255.255.255.0
 ```
 
+- Adding default gateway to an Interface
+
+```sh
+$ sudo ip route add default via <GW> dev <Interface>
+```
+
 - Removing an IP address assigned to an Interface
 
 ```sh
