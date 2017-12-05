@@ -39,7 +39,7 @@ for((i=0;i<$number;i++))
 		sudo ifconfig int$i up
 		echo "interface int$i is up"
 	done
-sudo 
+ 
 #echo "Adding interfaces to bridge $bridge"
 #for((i=0;i<$number;i++))
 #	do
